@@ -10,13 +10,18 @@ This app will allow users to search the forza api for awesome cars and save thei
 
 # RESTful routes
 
-GET 		/cars			Index(Read)			Show new cars
 
-GET		/cars	/:id  		Show(Read)			List information about a specific car
-
-Put		cars/:id		Comment(Update) 		adds a new comment for a car
-
-Delete	/cars/id		Destroy(delete)			Deletes a car
+GET 	|	/cars				        |  Index(Read)		|	Show cars from api
+      |                     |                 |
+POST	| /cars	/:id  			  | add (Create)		|	Add a car to favorites
+      |                     |                 |
+GET		| /favorites			    | Index(Read)			| show favorite cars
+      |                     |                 |
+POST	|  favorites/:id		  | Comment(Create) |	Adds a new comment for a car
+      |                     |                 |
+PUT	  |	fav/id/commment/id	| edit(Update)		|	updates a comment
+      |                     |                 |
+Delete|	/favorite/id		    | Destroy(delete)	|	Deletes a car
 
 # Erd
 
