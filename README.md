@@ -8,7 +8,18 @@ This app will allow users to search the forza api for awesome cars and save thei
 ![wireframe](./images/cars.png)
 ![wireframe](./images/favorites.png)
 
+# RESTful routes
+
+GET 		/cars			Index(Read)			Show new cars
+
+GET		/cars	/:id  		Show(Read)			List information about a specific car
+
+Put		cars/:id		Comment(Update) 		adds a new comment for a car
+
+Delete	/cars/id		Destroy(delete)			Deletes a car
+
 # Erd
+
 ![erd](./images/erd.png)
 
 # Mvp
