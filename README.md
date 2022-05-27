@@ -25,7 +25,7 @@ Delete|	/favorite/id		    | Destroy(delete)	|	Deletes a car
 
 # Erd
 
-![erd](./images/erd.png)
+![erd](./images/erdnew.png)
 
 # Mvp
 
