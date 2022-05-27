@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 // auth middleware
 app.use(async (req, res, next) => {
   try {
-    // if there is a cookie -- 
+    // if there is a cookie --
     if (req.cookies.userId) {
       // try to find that user in the db
       const userId = req.cookies.userId
@@ -54,11 +54,28 @@ app.use(async (req, res, next) => {
 // routes
 app.get('/', (req, res) => {
   // console.log(res.locals)
+  // throw new Error('oooops')
   res.render('index')
 })
 
 // controllers
 app.use('/users', require('./controllers/users'))
+
+// 404 error handler -- needs to go last
+app.use((req, res, next) => {
+  // render a 404 template
+  res.status(404).render('404.ejs')
+})
+
+
+
+// 500 error handler
+app.use((error, req, res, next) => {
+  // log the error
+  console.log(error)
+  // send a 500 error template
+  res.status(500).render('500.ejs')
+})
 
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);

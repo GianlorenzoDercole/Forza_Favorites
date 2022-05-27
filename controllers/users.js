@@ -10,16 +10,16 @@ router.get('/new', (req, res) => {
 })
 
 // POST /users -- creates a new user and redirects to index
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
 	try {
 		// try to create the user
 		// hash password
-		const hashedPassword = bcrypt.hashSync(req.body.password, 12) 
+		const hashedPassword = bcrypt.hashSync(req.body.password, 12)
 		const [user, created] = await db.user.findOrCreate({
 			where: { email: req.body.email },
 			defaults: { password: hashedPassword }
 		})
-
+		// throw new Error('server melted down')
 		// if the user is new
 		if (created) {
 			// login them in by giving them cookie
@@ -36,12 +36,12 @@ router.post('/', async (req, res) => {
 			res.render('users/new.ejs', { msg: 'email exists in database already 🤦‍♂️' })
 		}
 	} catch (err) {
-		console.log(err)
+		next(err)
 	}
 })
 
 // GET /users/login -- renders a login form
-router.get('/login', (req, res) => {
+router.get('/login', (req, res, next) => {
 	res.render('users/login.ejs', { msg: null })
 })
 
@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
 			where: { email: req.body.email }
 		})
 		const msg = 'bad login credentials, you are not authenticated!'
-		// if the user is not found -- display the login form and 
+		// if the user is not found -- display the login form and
 		if (!foundUser) {
 			console.log('email not found on login')
 			res.render('users/login.ejs', { msg })
@@ -68,14 +68,14 @@ router.post('/login', async (req, res) => {
 			const encryptedId = cryptoJS.AES.encrypt(foundUser.id.toString(), process.env.ENC_KEY).toString()
 			res.cookie('userId', encryptedId)
 			// redirect to profile
-			res.redirect('/users/profile') 
+			res.redirect('/users/profile')
 		} else {
 			// if not -- render the login form with a message
 			res.render('users/login.ejs', { msg })
 		}
 
 	} catch (err) {
-		console.log(err)
+		next(err)
 	}
 })
 
