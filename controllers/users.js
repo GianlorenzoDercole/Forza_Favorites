@@ -75,7 +75,8 @@ router.post('/login', async (req, res) => {
 		}
 
 	} catch (err) {
-		next(err)
+		//next(err)
+		console.log(err)
 	}
 })
 

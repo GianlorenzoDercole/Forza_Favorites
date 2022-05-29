@@ -1,4 +1,4 @@
-sequelize model:create --name user --attributes userName:string,id:integer,email:string,password:string
+sequelize model:create --name user --attributes id:integer,email:string,password:string
 
 
 delete cars
