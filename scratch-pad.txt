@@ -1,0 +1,12 @@
+sequelize model:create --name user --attributes userName:string,id:integer,email:string,password:string
+
+
+delete cars
+user_cars = favorite
+carId = favoriteId
+
+
+
+
+axios in an express route to get info from forza
+pass that into template

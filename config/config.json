@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "music_app_development",
+    "database": "forza_favorites_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

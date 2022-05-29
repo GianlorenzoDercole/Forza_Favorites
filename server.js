@@ -5,7 +5,7 @@ const rowdy = require('rowdy-logger')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const cryptoJS = require('crypto-js')
-
+const axios = require('axios')
 // app config
 const PORT = process.env.PORT || 3000
 const app = express()
@@ -52,12 +52,29 @@ app.use(async (req, res, next) => {
 })
 
 // routes
-app.get('/', (req, res) => {
-  // console.log(res.locals)
-  // throw new Error('oooops')
-  res.render('index')
-})
+// app.get('/', (req, res) => {
+//   // console.log(res.locals)
+//   // throw new Error('oooops')
+//   res.render('index')
+// })
 
+app.get('/', async (req, res) => {
+  try {
+    const searchUrl = 'https://forza-api.tk/'
+    console.log(searchUrl)
+    const response = await axios.get(searchUrl)
+    const searchUrl2 = 'https://forza-api.tk/'
+    const response2 = await axios.get(searchUrl)
+    console.log(response)
+    res.render('index.ejs', {
+      img: response.data.image,
+      i: response2.data.image
+    })
+
+  } catch (err) {
+    console.log('t')
+  }
+})
 // controllers
 app.use('/users', require('./controllers/users'))
 
