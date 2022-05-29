@@ -1,11 +1,13 @@
 sequelize model:create --name user --attributes id:integer,email:string,password:string
 
+sequelize model:create --name favorite --attributes id:integer,userid:integer
+
+sequelize model:create --name comment --attributes id:integer,favoriteid,userid:integer,comment:string
+
 
 delete cars
 user_cars = favorite
 carId = favoriteId
-
-
 
 
 axios in an express route to get info from forza
