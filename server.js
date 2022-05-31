@@ -124,6 +124,14 @@ app.get('/favorites', async (req, res) => {
   res.render('favorites.ejs' , {allFaves})
 })
 
+app.post('/favorites', async (req, res) => {
+  //console.log(req.body)
+  await db.fave.create({
+    favoriteid: req.body.favoriteid,
+    userid: userid
+  })
+  //res.redirect('/faves')
+})
 // app.post('/favorites', async (req, res) => {
 //   console.log('USER', res.locals.user)
 //   const created = await db.favorite.create({
@@ -135,20 +143,17 @@ app.get('/favorites', async (req, res) => {
 // })
 
 
-
-
-
-app.post('/favorites', async (req, res) => {
-  try{
-    const created = await db.favorite.create({
-      favoriteid: req.body.favoriteid,
-      // userid: userid
-    })
-  }
-  catch (err){
-console.log(err)
-  }
-})
+// app.post('/favorites', async (req, res) => {
+//   try{
+//     const created = await db.favorite.create({
+//       favoriteid: req.body.favoriteid,
+//       // userid: userid
+//     })
+//   }
+//   catch (err){
+// console.log(err)
+//   }
+// })
 
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);

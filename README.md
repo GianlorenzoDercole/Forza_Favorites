@@ -25,7 +25,7 @@ This app will allow users to search the forza api for awesome cars and save thei
 
 # Erd
 
-![erd](./images/erdnew.png)
+![erd](./images/e.png)
 
 # Mvp
 
