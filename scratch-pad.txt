@@ -1,6 +1,6 @@
 sequelize model:create --name user --attributes id:integer,email:string,password:string
 
-sequelize model:create --name favorite --attributes favoriteid:integer,userid:integer
+sequelize model:create --name favorite --attributes favoriteid:string,userid:integer
 
 sequelize model:create --name comment --attributes commentid:integer,favoriteid:integer,userid:integer,comment:string
 

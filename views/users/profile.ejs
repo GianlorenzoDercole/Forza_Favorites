@@ -1,10 +1,28 @@
 <h2>User Profile</h2>
-
 <h3>Thanks for being a user, <%= user.email %>! 🎉</h3>
-<img src="<%= i %>">
-<img src="https://forza-api.tk/img/AUDI_RS6_2009.png">
+<form action="/users/profile" method="PUT">
 
-<form method="POST" action="/favorites">
-
-    <button type='submit'>Fave movie</button>
+	<button type="submit">Show Cars!</button>
 </form>
+
+<img src="<%= i %>">
+<form method="POST" action="/favorites">
+    <input hidden value="<%= i %>" name='favoriteid' />
+    <input hidden value="<%= user.id %>" name="userid" />
+    <button type='submit'>Favorite</button>
+</form>
+
+<img src="<%= i2 %>">
+<form method="POST" action="/faves">
+    <button type='submit'>Favorite</button>
+</form>
+
+
+
+<img src="<%= i3 %> ">
+<form method="POST" action="/faves">
+
+    <button type='submit'>Favorite</button>
+</form>
+
+

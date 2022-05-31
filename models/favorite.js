@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.favorite.belongsTo(models.user)
+      models.favorite.hasOne(models.comment)
     }
   }
   favorite.init({
-    favoriteid: DataTypes.INTEGER,
+    favoriteid: DataTypes.STRING,
     userid: DataTypes.INTEGER
   }, {
     sequelize,

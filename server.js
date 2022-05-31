@@ -117,6 +117,39 @@ app.use((error, req, res, next) => {
   res.status(500).render('500.ejs')
 })
 
+
+
+app.get('/favorites', async (req, res) => {
+  const allFaves = await db.favorite.findAll()
+  res.render('favorites.ejs' , {allFaves})
+})
+
+// app.post('/favorites', async (req, res) => {
+//   console.log('USER', res.locals.user)
+//   const created = await db.favorite.create({
+//     favoriteid: req.body.favoriteid,
+//     // userid: userid
+//   })
+//   res.send(created)
+//   //res.redirect('/favorites')
+// })
+
+
+
+
+
+app.post('/favorites', async (req, res) => {
+  try{
+    const created = await db.favorite.create({
+      favoriteid: req.body.favoriteid,
+      // userid: userid
+    })
+  }
+  catch (err){
+console.log(err)
+  }
+})
+
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
   rowdyRes.print()
