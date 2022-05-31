@@ -65,10 +65,33 @@ app.get('/', async (req, res) => {
     const response = await axios.get(searchUrl)
     const searchUrl2 = 'https://forza-api.tk/'
     const response2 = await axios.get(searchUrl)
+    const searchUrl3 = 'https://forza-api.tk/'
+    const response3 = await axios.get(searchUrl)
     console.log(response)
     res.render('index.ejs', {
-      img: response.data.image,
-      i: response2.data.image
+      i: response.data.image,
+      i2: response2.data.image,
+      i3: response3.data.image
+    })
+
+  } catch (err) {
+    console.log('t')
+  }
+})
+app.get('/users/profile', async (req, res) => {
+  try {
+    const searchUrl = 'https://forza-api.tk/'
+    console.log(searchUrl)
+    const response = await axios.get(searchUrl)
+    const searchUrl2 = 'https://forza-api.tk/'
+    const response2 = await axios.get(searchUrl)
+    const searchUrl3 = 'https://forza-api.tk/'
+    const response3 = await axios.get(searchUrl)
+    console.log(response)
+    res.render('users/profile.ejs', {
+      i: response.data.image,
+      i2: response2.data.image,
+      i3: response3.data.image
     })
 
   } catch (err) {

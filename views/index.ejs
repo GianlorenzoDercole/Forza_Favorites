@@ -1,19 +1,26 @@
 <h2>Sign up or login to get started</h2>
 <style>
     img{
-        display:block;
         width:400px;
         margin-top: 20px;
         margin-bottom: 20px;
     }
 </style>
 
-<img src="<%= img %>">
-<form method="POST" action="/faves">
 
-    <button type='submit'>Favorite</button>
+<form action="/" method="PUT">
+
+
+	<button type="submit">Show Cars!</button>
 </form>
 <img src="<%= i %>">
+<form method="POST" action="/faves">
+
+    <button type='submit'>Favorite</button>
+</form>
+<img src="<%= i2 %>">
+
+
 
 
 
@@ -21,4 +28,14 @@
 
     <button type='submit'>Favorite</button>
 </form>
-<img src="https://forza-api.tk/img/AUDI_RS6_2009.png">
+<img src="<%= i3 %> ">
+<form method="POST" action="/faves">
+
+    <button type='submit'>Favorite</button>
+</form>
+<form method="POST" action="/">
+    <input hidden value="<%= 1 %>" name='favoriteid' />
+    <input hidden value="<%= 1 %>" name="userid" />
+    <button type='submit'>Fave this</button>
+</form>
+<!-- <img src="https://forza-api.tk/img/AUDI_RS6_2009.png"> -->
