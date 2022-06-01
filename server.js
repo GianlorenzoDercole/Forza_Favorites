@@ -102,6 +102,7 @@ app.get('/users/profile', async (req, res) => {
 // controllers         //
 app.use('/users', require('./controllers/users'))
 app.use('/favorites', require('./controllers/favorites'))
+app.use('/comments', require('./controllers/comments' ))
 // app.get('/favorites', async (req, res) => {
 
 //   if (!res.locals.user) {

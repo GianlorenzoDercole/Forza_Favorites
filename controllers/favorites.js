@@ -12,18 +12,20 @@ router.get('/', async (req, res) => {
           return // end the route here
       }
     const user = res.locals.user
-    const allFaves = await db.favorite.findAll()
+    const allFaves = await db.favorite.findAll({
+        include: [db.comment]
+    })
 
 
-
+    console.log(allFaves)
     res.render('users/favorites.ejs' , {allFaves, user})
   })
 
   router.post('/', async (req, res) => {
-    //console.log(req.body)
+    console.log(req.body)
     await db.favorite.findOrCreate({
       where:{
-        favoriteId: req.body.favoriteId,
+        carUrl: req.body.carUrl,
         userId: res.locals.user.dataValues.id
       },
 
@@ -36,7 +38,7 @@ router.get('/', async (req, res) => {
 router.delete('/', async (req,res) => {
     const instance = await db.favorite.findOne({
         where: {
-            favoriteId: req.body.favoriteId
+            carUrl: req.body.carUrl
         }
     })
 

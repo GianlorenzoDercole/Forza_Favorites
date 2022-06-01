@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.favorite.belongsTo(models.user)
-      models.favorite.hasOne(models.comment)
+      models.favorite.hasOne(models.comment, {onDelete:"cascade"})
     }
   }
   favorite.init({
-    favoriteId: DataTypes.STRING,
+    carUrl: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
     sequelize,
