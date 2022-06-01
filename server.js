@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const db = require('./models')
 const cryptoJS = require('crypto-js')
 const axios = require('axios')
+const methodOverride = require('method-override')
 // app config
 const PORT = process.env.PORT || 3000
 const app = express()
@@ -16,7 +17,7 @@ const rowdyRes = rowdy.begin(app)
 app.use(require('express-ejs-layouts'))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-
+app.use(methodOverride("_method"))
 // DIY middleware
 // happens on every request
 app.use((req, res, next) => {
@@ -98,35 +99,37 @@ app.get('/users/profile', async (req, res) => {
     console.log('t')
   }
 })
-// controllers
+// controllers         //
 app.use('/users', require('./controllers/users'))
+app.use('/favorites', require('./controllers/favorites'))
+// app.get('/favorites', async (req, res) => {
 
-app.get('/favorites', async (req, res) => {
+//   if (!res.locals.user) {
+// 		// if the user is not authorized, ask them to log in
+// 		res.render('users/login.ejs', { msg: 'please log in to continue' })
+// 		return // end the route here
+// 	}
+//   const user = res.locals.user
+//   const allFaves = await db.favorite.findAll()
 
-  if (!res.locals.user) {
-		// if the user is not authorized, ask them to log in
-		res.render('users/login.ejs', { msg: 'please log in to continue' })
-		return // end the route here
-	}
-  const user = res.locals.user
-  const allFaves = await db.favorite.findAll()
-
-  res.render('users/favorites.ejs' , {allFaves, user})
-})
-
-app.post('/favorites', async (req, res) => {
-  //console.log(req.body)
-  await db.favorite.findOrCreate({
-    where:{
-      favoriteId: req.body.favoriteId,
-      userId: res.locals.user.dataValues.id
-    },
+//   res.render('users/favorites.ejs' , {allFaves, user})
+// })
 
 
-  })
 
-  res.redirect('/favorites')
-})
+// app.post('/favorites', async (req, res) => {
+//   //console.log(req.body)
+//   await db.favorite.findOrCreate({
+//     where:{
+//       favoriteId: req.body.favoriteId,
+//       userId: res.locals.user.dataValues.id
+//     },
+
+
+//   })
+
+//   res.redirect('/favorites')
+// })
 // app.post('/favorites', async (req, res) => {
 //   console.log('USER', res.locals.user)
 //   const created = await db.favorite.create({
@@ -135,19 +138,6 @@ app.post('/favorites', async (req, res) => {
 //   })
 //   res.send(created)
 //   //res.redirect('/favorites')
-// })
-
-
-// app.post('/favorites', async (req, res) => {
-//   try{
-//     const created = await db.favorite.create({
-//       favoriteid: req.body.favoriteid,
-//       // userid: userid
-//     })
-//   }
-//   catch (err){
-// console.log(err)
-//   }
 // })
 
 // 404 error handler -- needs to go last

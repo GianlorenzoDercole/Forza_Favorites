@@ -1,5 +1,15 @@
-<% allFaves.forEach(fave => { %>
-
+<style>
+    img{
+        width:400px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+<% allFaves.forEach((fave, index ) => { %>
     <h2><%= fave.favoriteId %></h2>
-
+    <img src="<%= fave.favoriteId %>">
+    <form method="POST" action="/favorites/?_method=DELETE">
+        <input hidden value="<%= fave.favoriteId %>" name="favoriteId" />
+        <button type="submit">delete</button>
+    </form>
 <% }) %>
