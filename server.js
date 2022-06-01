@@ -102,6 +102,7 @@ app.get('/users/profile', async (req, res) => {
 app.use('/users', require('./controllers/users'))
 
 app.get('/favorites', async (req, res) => {
+
   if (!res.locals.user) {
 		// if the user is not authorized, ask them to log in
 		res.render('users/login.ejs', { msg: 'please log in to continue' })
@@ -110,21 +111,21 @@ app.get('/favorites', async (req, res) => {
   const user = res.locals.user
   const allFaves = await db.favorite.findAll()
 
-  res.render('favorites.ejs' , {allFaves, user})
+  res.render('users/favorites.ejs' , {allFaves, user})
 })
 
 app.post('/favorites', async (req, res) => {
   //console.log(req.body)
   await db.favorite.findOrCreate({
     where:{
-      favoriteid: req.body.favoriteid,
-      userid: res.locals.user.dataValues.id
+      favoriteId: req.body.favoriteId,
+      userId: res.locals.user.dataValues.id
     },
 
 
   })
-  res.send('hi')
-  //res.redirect('/faves')
+
+  res.redirect('/favorites')
 })
 // app.post('/favorites', async (req, res) => {
 //   console.log('USER', res.locals.user)

@@ -7,9 +7,9 @@
 </form>
 
 <img src="<%= i %>">
-<form method="POST" action="/users/favorites">
+<form method="POST" action="/favorites">
     <input hidden value="<%= i %>" name='favoriteId' />
-    <input hidden value="<%= user.id %>" name="userId" />
+    
     <button type='submit'>Favorite</button>
 </form>
 
