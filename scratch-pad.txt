@@ -1,8 +1,8 @@
 sequelize model:create --name user --attributes id:integer,email:string,password:string
 
-sequelize model:create --name favorite --attributes favoriteid:string,userid:integer
+sequelize model:create --name favorite --attributes favoriteId:string,userId:integer
 
-sequelize model:create --name comment --attributes commentid:integer,favoriteid:integer,userid:integer,comment:string
+sequelize model:create --name comment --attributes favoriteId:string,userId:integer,comment:string
 
 
 delete cars
@@ -11,3 +11,35 @@ carId = favoriteId
 
 axios in an express route to get info from forza
 pass that into template
+
+
+
+
+
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class comment extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      models.comment.belongsTo(models.favorite)
+    }
+  }
+  comment.init({
+    commentid: DataTypes.INTEGER,
+    favoriteid: DataTypes.INTEGER,
+    userid: DataTypes.INTEGER,
+    comment: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'comment',
+  });
+  return comment;
+};

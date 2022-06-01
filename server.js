@@ -87,7 +87,7 @@ app.get('/users/profile', async (req, res) => {
     const response2 = await axios.get(searchUrl)
     const searchUrl3 = 'https://forza-api.tk/'
     const response3 = await axios.get(searchUrl)
-    console.log(response)
+    //console.log(response)
     res.render('users/profile.ejs', {
       i: response.data.image,
       i2: response2.data.image,
@@ -101,35 +101,29 @@ app.get('/users/profile', async (req, res) => {
 // controllers
 app.use('/users', require('./controllers/users'))
 
-// 404 error handler -- needs to go last
-app.use((req, res, next) => {
-  // render a 404 template
-  res.status(404).render('404.ejs')
-})
-
-
-
-// 500 error handler
-app.use((error, req, res, next) => {
-  // log the error
-  console.log(error)
-  // send a 500 error template
-  res.status(500).render('500.ejs')
-})
-
-
-
 app.get('/favorites', async (req, res) => {
+  if (!res.locals.user) {
+		// if the user is not authorized, ask them to log in
+		res.render('users/login.ejs', { msg: 'please log in to continue' })
+		return // end the route here
+	}
+  const user = res.locals.user
   const allFaves = await db.favorite.findAll()
-  res.render('favorites.ejs' , {allFaves})
+
+  res.render('favorites.ejs' , {allFaves, user})
 })
 
 app.post('/favorites', async (req, res) => {
   //console.log(req.body)
-  await db.fave.create({
-    favoriteid: req.body.favoriteid,
-    userid: userid
+  await db.favorite.findOrCreate({
+    where:{
+      favoriteid: req.body.favoriteid,
+      userid: res.locals.user.dataValues.id
+    },
+
+
   })
+  res.send('hi')
   //res.redirect('/faves')
 })
 // app.post('/favorites', async (req, res) => {
@@ -155,6 +149,19 @@ app.post('/favorites', async (req, res) => {
 //   }
 // })
 
+// 404 error handler -- needs to go last
+app.use((req, res, next) => {
+  // render a 404 template
+  res.status(404).render('404.ejs')
+})
+
+// 500 error handler
+app.use((error, req, res, next) => {
+  // log the error
+  console.log(error)
+  // send a 500 error template
+  res.status(500).render('500.ejs')
+})
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
   rowdyRes.print()
