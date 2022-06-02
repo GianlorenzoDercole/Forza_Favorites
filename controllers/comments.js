@@ -48,4 +48,27 @@ router.get('/', async (req, res) => {
 //     res.redirect('/favorites')
 // })
 
+
+
+
+
+router.get('/:id/edit', async (req,res) => {
+    const id = await db.comment.findOne({
+        where: {
+           id : req.params.id
+        }
+    })
+    console.log(id)
+
+     res.render('users/edit.ejs', {comment:id})
+})
+router.put('/', async(req, res) => {
+    const updatedComment = await db.comment.findOne({
+        where: {
+          id : req.body.id
+        }
+    })
+    await updatedComment.update({comment: req.body.comment})
+    res.redirect('/favorites')
+})
   module.exports = router
