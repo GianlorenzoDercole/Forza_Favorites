@@ -1,6 +1,6 @@
 
 <% allFaves.forEach((fave, index ) => { %>
-    <h2><%= fave.carUrl %></h2>
+    
     <img src="<%= fave.carUrl %>">
     <form method="POST" action="/favorites/?_method=DELETE">
         <input hidden value="<%= fave.carUrl %>" name="carUrl" />

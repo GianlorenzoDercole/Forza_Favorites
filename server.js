@@ -61,12 +61,12 @@ app.use(async (req, res, next) => {
 
 app.get('/', async (req, res) => {
   try {
-    const searchUrl = 'https://forza-api.tk/'
+    const searchUrl = process.env.API_KEY
     console.log(searchUrl)
     const response = await axios.get(searchUrl)
-    const searchUrl2 = 'https://forza-api.tk/'
+    const searchUrl2 = process.env.API_KEY
     const response2 = await axios.get(searchUrl)
-    const searchUrl3 = 'https://forza-api.tk/'
+    const searchUrl3 = process.env.API_KEY
     const response3 = await axios.get(searchUrl)
     console.log(response)
     res.render('index.ejs', {
@@ -81,12 +81,12 @@ app.get('/', async (req, res) => {
 })
 app.get('/users/profile', async (req, res) => {
   try {
-    const searchUrl = 'https://forza-api.tk/'
+    const searchUrl = process.env.API_KEY
     console.log(searchUrl)
     const response = await axios.get(searchUrl)
-    const searchUrl2 = 'https://forza-api.tk/'
+    const searchUrl2 = process.env.API_KEY
     const response2 = await axios.get(searchUrl)
-    const searchUrl3 = 'https://forza-api.tk/'
+    const searchUrl3 = process.env.API_KEY
     const response3 = await axios.get(searchUrl)
     //console.log(response)
     res.render('users/profile.ejs', {
