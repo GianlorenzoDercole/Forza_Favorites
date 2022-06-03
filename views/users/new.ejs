@@ -2,14 +2,54 @@
 	<div>
 		<p><%= msg %></p>
 	</div>
-<% } %> 
-
+<% } %>
 <form action="/users" method="POST">
 	<label for="email">Email:</label>
 	<input id="email" type="email" name="email" placeholder="enter your email..." required />
 
 	<label for="password">Password:</label>
-	<input id="password" type="password" name="password" placeholder="enter your password 📀" required />
+	<input id="password" type="password" name="password" placeholder="enter your password " required />
 
 	<button type="submit">Sign up!</button>
 </form>
+
+
+
+
+
+<style>
+    button{
+    margin: 10px;
+    height: 35px;
+    width: 100px;
+    font-size: 20px;
+    background-color: #6D8B74;
+    color: #EFEAD8;
+    border: none;
+}
+input{
+    height:31px;
+    width:200px;
+    border: none;
+}
+p{
+    margin: 10px;
+    margin-left:0px;
+    color: #6D8B74;
+    font-size: 22px;
+}
+body{
+    background-color: #EFEAD8;
+}
+h1{
+    color:#6D8B74;
+
+}
+a{
+    color: #6D8B74;
+    font-size: 25px;
+}
+ul {
+    list-style: none;
+}
+</style>
