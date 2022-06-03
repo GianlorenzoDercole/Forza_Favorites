@@ -2,6 +2,10 @@
 
 This app will allow users to search the forza api for pictures of cars and save their favorites to a list.  They will be able to write comments on their favorite cars.
 
+# Link
+
+https://forza-favorites.herokuapp.com/
+
 # Installation instructions
 
 + Fork and clone this repository
@@ -44,3 +48,11 @@ This app was built using Express to handle routes, SQL for the database and EJS.
 # Approach
 
 I wanted the user to enjoy browsing for new cars, so adding functionality that would allow them to press a button and view a fresh batch of randomly generated cars was an important step.  The plan for the routes was to keep everything as streamlined as possible, one user can have many favorites and each favorite can have one comment.  Once the database was set up, I began building out the routes so that a user could add an account, chooose some favorites and comment on why they like them.
+
+# Post project
+
+Building this app was a great learning experience.  I found that solvinf problems with my routes was slow going.. Some of the time problems took hours and days to solve rather than minutes.  This project really helped strengthen my understanding of the relationship between a database and the routes it needs to communicate.
+
+# Sources
+
+I used the mdn documentation for Express
