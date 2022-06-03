@@ -19,17 +19,17 @@ This app will allow users to search the forza api for pictures of cars and save 
 # RESTful routes
 
 
-+ GET 	|	/cars				        |  Index(Read)		|	Show cars from api
+ GET 	|  /profile				|  Index(Read)		|	Show cars from api
 
-+ POST	| /cars	/:id  			  | add (Create)		|	Add a car to favorites
+ POST	|  /cars/:id  		    | add (Create)		|	Add a car to favorites
 
-+ GET		| /favorites			    | Index(Read)			| show favorite cars
+ GET	|  /favorites			| Index(Read)		|   show favorite cars
 
-+ POST	|  favorites/:id		  | Comment(Create) |	Adds a new comment for a car
+ POST	|  favorites/:id		| Comment(Create)   |	Adds a new comment for a car
 
-+ PUT	  |	fav/id/commment/id	| edit(Update)		|	updates a comment
+ PUT	|  fav/id/commment/id	| edit(Update)		|	updates a comment
 
-+ Delete|	/favorite/id		    | Destroy(delete)	|	Deletes a car
+ Delete |  /favorite/id		    | Destroy(delete)	|	Deletes a car
 
 # Erd
 
