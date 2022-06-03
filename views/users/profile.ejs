@@ -1,15 +1,19 @@
-<h3>You are currently logged in as, <%= user.email %>!</h3>
+<h1>Choose some favorites!</h1>
+<p class="items">You are currently logged in as, <%= user.email %></p>
+<link rel="stylesheet" href="../css/style.css" />
 <form action="/users/profile" method="PUT">
-	<button type="submit">Show Cars!</button>
+	<button class="carsButton" type="submit">Show me some cars</button>
 </form>
 <form action="/favorites" method="PUT">
-	<button type="submit">Favorites</button>
+	<button class="favoritesButton" type="submit">View my favorites</button>
 </form>
+<div class='card'>
 <img src="<%= i %>">
 <form method="POST" action="/favorites">
     <input hidden value="<%= i %>" name='carUrl' />
-    <button type='submit'>Favorite</button>
+    <button class="addToFavoritesButton" type='submit'>Favorite</button>
 </form>
+</div>
 
 
 
@@ -19,19 +23,19 @@
 
 
 
-
-
+<div class='card'>
 <img src="<%= i2 %>">
 <form method="POST" action="/favorites">
     <input hidden value="<%= i2 %>" name='carUrl' />
-    <button type='submit'>Favorite</button>
+    <button class="addToFavoritesButton" type='submit'>Favorite</button>
 </form>
+</div>
 
-
-
+<div class='card'>
 <img src="<%= i3 %> ">
 <form method="POST" action="/favorites">
     <input hidden value="<%= i3 %>" name='carUrl' />
-    <button type='submit'>Favorite</button>
+    <button class="addToFavoritesButton" type='submit'>Favorite</button>
 
 </form>
+</div>

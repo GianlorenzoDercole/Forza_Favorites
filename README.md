@@ -1,6 +1,6 @@
 # Forza_Favorites
 
-This app will allow users to search the forza api for awesome cars and save their favorites to a list.  They will be able to write comments on their favorite cars.
+This app will allow users to search the forza api for pictures of cars and save their favorites to a list.  They will be able to write comments on their favorite cars.
 
 # Wireframes
 

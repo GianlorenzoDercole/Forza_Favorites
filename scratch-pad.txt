@@ -200,3 +200,12 @@ app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
   rowdyRes.print()
 })
+
+
+
+fork clone
+
+nodemon
+api
+env
+npm install

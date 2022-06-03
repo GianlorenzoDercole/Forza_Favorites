@@ -1,0 +1,90 @@
+h1{
+    color:#6D8B74;
+    font-size: 81px;
+    text-align: center;
+
+}
+#collection{
+    text-align: left;
+}
+img{
+    height:400px;
+
+}
+/*  ../css */
+
+
+
+
+.large{
+
+    height: 60%;
+    width:90%;
+    margin-left: 5%;
+    margin-top: 5px;
+
+}
+h2{
+    color: #6D8B74;
+    text-align: center;
+}
+button{
+    margin: 10px;
+    height: 35px;
+    width: 100px;
+    font-size: 20px;
+    background-color: #6D8B74;
+    color: #EFEAD8;
+    border: none;
+}
+input{
+    height:31px;
+    width:200px;
+    border: none;
+}
+p{
+    margin: 10px;
+    margin-left:0px;
+    color: #6D8B74;
+    font-size: 22px;
+}
+.card{
+
+    margin-top: 10px;
+    display:inline-block;
+    margin-left: 10px;
+
+}
+.collection{
+    margin-top: 10px;
+    margin-left: 30%;
+}
+.delete{
+    margin-left: 0px;
+}
+.addToFavoritesButton{
+    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+body{
+    background-color: #EFEAD8;
+}
+a{
+    color: #6D8B74;
+    font-size: 25px;
+}
+.carsButton{
+    height: 65px;
+    width: 200px;
+    /* margin-left: 44%; */
+
+}
+.favoritesButton{
+    height: 65px;
+    width: 200px;
+    /* margin-left: 44%; */
+}
+.items{
+    text-align: center;
+}

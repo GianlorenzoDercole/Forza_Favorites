@@ -1,5 +1,6 @@
-<p>p</p>
 
+<h1>Edit your post below</h1>
+<link rel="stylesheet" href="../css/style.css" />
 <form method="POST" action="/comments/?_method=PUT">
     <input hidden value="<%= comment.id %>" name="id" />
     <input  type="text" value="<%= comment.comment%>" name="comment" />
