@@ -5,7 +5,6 @@ const cryptoJS = require('crypto-js')
 const bcrypt = require('bcryptjs')
 
 router.get('/', async (req, res) => {
-
     if (!res.locals.user) {
           // if the user is not authorized, ask them to log in
           res.render('users/login.ejs', { msg: 'please log in to continue' })
@@ -20,7 +19,7 @@ router.get('/', async (req, res) => {
     console.log(allFaves)
     res.render('users/favorites.ejs' , {allFaves, user})
   })
-
+  // add a new car to favorites
   router.post('/', async (req, res) => {
     console.log(req.body)
     await db.favorite.findOrCreate({
@@ -29,12 +28,11 @@ router.get('/', async (req, res) => {
         userId: res.locals.user.dataValues.id
       },
 
-
     })
 
     res.redirect('/favorites')
   })
-
+// use destroy method to remove care from favorites
 router.delete('/', async (req,res) => {
     const instance = await db.favorite.findOne({
         where: {

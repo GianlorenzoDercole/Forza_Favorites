@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
     res.render('users/favorites.ejs' , {allComments, user})
   })
-
+  // take information from the comment form and relay it to the data base then redirect to favorites
   router.post('/', async (req, res) => {
     //console.log(req.body)
     console.log('ROUTE HIT')
@@ -28,27 +28,10 @@ router.get('/', async (req, res) => {
         userId: res.locals.user.dataValues.id,
         comment: req.body.comment
 
-
-
     })
 
     res.redirect('/favorites')
   })
-
-// router.delete('/', async (req,res) => {
-//     const instance = await db.favorite.findOne({
-//         where: {
-//             favoriteId: req.body.favoriteId
-//         }
-//     })
-
-//     console.log(instance, 'TEST')
-//     // await the destruction
-//     await instance.destroy()
-//     res.redirect('/favorites')
-// })
-
-
 
 
 
@@ -62,6 +45,7 @@ router.get('/:id/edit', async (req,res) => {
 
      res.render('users/edit.ejs', {comment:id})
 })
+// use the update method to new comment
 router.put('/', async(req, res) => {
     const updatedComment = await db.comment.findOne({
         where: {

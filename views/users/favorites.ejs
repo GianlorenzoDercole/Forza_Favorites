@@ -1,6 +1,6 @@
 <h1 id="collection" class="collection">Enjoy your collection...</h1>
 <% allFaves.forEach((fave, index ) => { %>
-    <!-- / -->
+    <!-- view favorites and add or edit a comment -->
     <div class="collection">
     <img src="<%= fave.carUrl %>">
     <form method="POST" action="/favorites/?_method=DELETE">
@@ -13,10 +13,7 @@
         <button type="submit">comment</button>
     </form>
 
-
     <% if(fave.comment !== null){%>
-
-
 
         <p><%= fave.comment.comment %></p>
 

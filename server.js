@@ -80,6 +80,8 @@ app.get('/', async (req, res) => {
     console.log('t')
   }
 })
+
+// generates three randomly selected pictures from the forza api to display on the profile page
 app.get('/users/profile', async (req, res) => {
   try {
     const searchUrl = process.env.API_KEY
@@ -100,47 +102,19 @@ app.get('/users/profile', async (req, res) => {
     console.log('t')
   }
 })
-// controllers         //
+// controllers
 app.use('/users', require('./controllers/users'))
 app.use('/favorites', require('./controllers/favorites'))
 app.use('/comments', require('./controllers/comments' ))
-// app.get('/favorites', async (req, res) => {
-
-//   if (!res.locals.user) {
-// 		// if the user is not authorized, ask them to log in
-// 		res.render('users/login.ejs', { msg: 'please log in to continue' })
-// 		return // end the route here
-// 	}
-//   const user = res.locals.user
-//   const allFaves = await db.favorite.findAll()
-
-//   res.render('users/favorites.ejs' , {allFaves, user})
-// })
 
 
 
-// app.post('/favorites', async (req, res) => {
-//   //console.log(req.body)
-//   await db.favorite.findOrCreate({
-//     where:{
-//       favoriteId: req.body.favoriteId,
-//       userId: res.locals.user.dataValues.id
-//     },
 
 
-//   })
 
-//   res.redirect('/favorites')
-// })
-// app.post('/favorites', async (req, res) => {
-//   console.log('USER', res.locals.user)
-//   const created = await db.favorite.create({
-//     favoriteid: req.body.favoriteid,
-//     // userid: userid
-//   })
-//   res.send(created)
-//   //res.redirect('/favorites')
-// })
+
+
+
 
 // 404 error handler -- needs to go last
 app.use((req, res, next) => {
